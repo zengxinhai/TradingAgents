@@ -26,6 +26,7 @@ from .alpha_vantage_common import AlphaVantageRateLimitError
 from .ccxt_crypto import get_crypto_ohlcv, get_crypto_indicators
 from .cryptopanic_news import get_crypto_news_cryptopanic, get_global_crypto_news_cryptopanic
 from .reddit_sentiment import get_reddit_sentiment, get_global_reddit_sentiment
+from .x_sentiment import get_x_sentiment, get_global_x_sentiment
 
 # Configuration and routing logic
 from .config import get_config
@@ -126,9 +127,11 @@ VENDOR_METHODS = {
     # social_sentiment
     "get_social_sentiment": {
         "reddit": get_reddit_sentiment,
+        "x": get_x_sentiment,
     },
     "get_global_social_sentiment": {
         "reddit": get_global_reddit_sentiment,
+        "x": get_global_x_sentiment,
     },
 }
 

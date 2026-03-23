@@ -1,5 +1,6 @@
 typing-extensions
 ccxt
+tweepy
 langchain-core
 langchain-openai
 langchain-experimental
