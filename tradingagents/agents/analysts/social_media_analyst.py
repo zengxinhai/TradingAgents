@@ -1,7 +1,7 @@
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 import time
 import json
-from tradingagents.agents.utils.agent_utils import get_news
+from tradingagents.agents.utils.agent_utils import get_news, get_social_sentiment, get_global_social_sentiment
 from tradingagents.dataflows.config import get_config
 
 
@@ -12,12 +12,20 @@ def create_social_media_analyst(llm):
         company_name = state["company_of_interest"]
 
         tools = [
+            get_social_sentiment,
+            get_global_social_sentiment,
             get_news,
         ]
 
         system_message = (
-            "You are a social media and company specific news researcher/analyst tasked with analyzing social media posts, recent company news, and public sentiment for a specific company over the past week. You will be given a company's name your objective is to write a comprehensive long report detailing your analysis, insights, and implications for traders and investors on this company's current state after looking at social media and what people are saying about that company, analyzing sentiment data of what people feel each day about the company, and looking at recent company news. Use the get_news(query, start_date, end_date) tool to search for company-specific news and social media discussions. Try to look at all sources possible from social media to sentiment to news. Do not simply state the trends are mixed, provide detailed and finegrained analysis and insights that may help traders make decisions."
-            + """ Make sure to append a Markdown table at the end of the report to organize key points in the report, organized and easy to read.""",
+            "You are a social media and sentiment analyst specializing in crypto assets. "
+            "Your objective is to write a comprehensive report on community sentiment and social signals for the asset over the past week. "
+            "Use get_social_sentiment(ticker, start_date, end_date) to get asset-specific Reddit posts with upvote ratios and engagement metrics. "
+            "Use get_global_social_sentiment(curr_date, look_back_days) to gauge the broader crypto market mood. "
+            "Use get_news(ticker, start_date, end_date) for any supporting news context. "
+            "Analyze: overall sentiment trend, engagement volume, bullish vs bearish post ratio, notable narratives or FUD, and any sentiment divergence from price. "
+            "Do not simply state trends are mixed — provide specific, actionable insights. "
+            "Append a Markdown table at the end summarizing key sentiment signals."
         )
 
         prompt = ChatPromptTemplate.from_messages(

@@ -25,6 +25,7 @@ from .alpha_vantage import (
 from .alpha_vantage_common import AlphaVantageRateLimitError
 from .ccxt_crypto import get_crypto_ohlcv, get_crypto_indicators
 from .cryptopanic_news import get_crypto_news_cryptopanic, get_global_crypto_news_cryptopanic
+from .reddit_sentiment import get_reddit_sentiment, get_global_reddit_sentiment
 
 # Configuration and routing logic
 from .config import get_config
@@ -59,7 +60,14 @@ TOOLS_CATEGORIES = {
             "get_global_news",
             "get_insider_transactions",
         ]
-    }
+    },
+    "social_sentiment": {
+        "description": "Social media sentiment data",
+        "tools": [
+            "get_social_sentiment",
+            "get_global_social_sentiment",
+        ]
+    },
 }
 
 VENDOR_LIST = [
@@ -114,6 +122,13 @@ VENDOR_METHODS = {
     "get_insider_transactions": {
         "alpha_vantage": get_alpha_vantage_insider_transactions,
         "yfinance": get_yfinance_insider_transactions,
+    },
+    # social_sentiment
+    "get_social_sentiment": {
+        "reddit": get_reddit_sentiment,
+    },
+    "get_global_social_sentiment": {
+        "reddit": get_global_reddit_sentiment,
     },
 }
 
