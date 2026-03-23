@@ -25,7 +25,7 @@ DEFAULT_CONFIG = {
         "core_stock_apis": "yfinance",       # Options: alpha_vantage, yfinance, ccxt
         "technical_indicators": "yfinance",  # Options: alpha_vantage, yfinance, ccxt
         "fundamental_data": "yfinance",      # Options: alpha_vantage, yfinance
-        "news_data": "yfinance",             # Options: alpha_vantage, yfinance
+        "news_data": "yfinance",             # Options: alpha_vantage, yfinance, cryptopanic
     },
     # CCXT settings (used when data_vendors includes "ccxt")
     "ccxt_exchange": "binance",              # Any CCXT-supported exchange: binance, bybit, okx, etc.

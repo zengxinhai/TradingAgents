@@ -24,6 +24,7 @@ from .alpha_vantage import (
 )
 from .alpha_vantage_common import AlphaVantageRateLimitError
 from .ccxt_crypto import get_crypto_ohlcv, get_crypto_indicators
+from .cryptopanic_news import get_crypto_news_cryptopanic, get_global_crypto_news_cryptopanic
 
 # Configuration and routing logic
 from .config import get_config
@@ -65,6 +66,7 @@ VENDOR_LIST = [
     "yfinance",
     "alpha_vantage",
     "ccxt",
+    "cryptopanic",
 ]
 
 # Mapping of methods to their vendor-specific implementations
@@ -102,10 +104,12 @@ VENDOR_METHODS = {
     "get_news": {
         "alpha_vantage": get_alpha_vantage_news,
         "yfinance": get_news_yfinance,
+        "cryptopanic": get_crypto_news_cryptopanic,
     },
     "get_global_news": {
         "yfinance": get_global_news_yfinance,
         "alpha_vantage": get_alpha_vantage_global_news,
+        "cryptopanic": get_global_crypto_news_cryptopanic,
     },
     "get_insider_transactions": {
         "alpha_vantage": get_alpha_vantage_insider_transactions,
