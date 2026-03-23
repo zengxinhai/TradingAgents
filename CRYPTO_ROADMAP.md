@@ -3,10 +3,10 @@
 ## Month 1 — Crypto Data Layer
 Replace stock data sources with crypto-native equivalents. No agent logic changes.
 
-- [ ] Wire price/OHLCV via **CCXT** (`dataflows/ccxt_crypto.py`)
+- [x] Wire price/OHLCV via **CCXT** (`dataflows/ccxt_crypto.py`)
 - [ ] Add on-chain metrics via **Glassnode/Messari** — exchange inflows, whale activity, active addresses
-- [ ] Add crypto news via **CryptoPanic API** — has built-in sentiment scoring
-- [ ] Add social sentiment — Twitter/X, Reddit
+- [x] Add crypto news via **CryptoPanic API** — has built-in sentiment scoring
+- [x] Add social sentiment — Reddit (`dataflows/reddit_sentiment.py`) + X/Twitter (`dataflows/x_sentiment.py`, requires `X_BEARER_TOKEN`)
 - [ ] Add funding rates + open interest via Bybit/Binance API — critical for perps
 - [ ] Add **On-Chain Analyst** agent — no stock equivalent; genuine retail edge
 - [ ] Update Fundamentals Analyst prompt — swap P/E for tokenomics, TVL, protocol revenue
